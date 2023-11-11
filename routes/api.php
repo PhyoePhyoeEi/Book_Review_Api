@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
+Route::middleware('auth:sanctum')->post('auth/logout', [AuthController::class, 'logoutUser']);
 
 Route::apiResource('books',BooksController::class)->middleware('auth:sanctum');
 Route::apiResource('reviews',ReviewsController::class)->middleware('auth:sanctum');
